@@ -1,0 +1,316 @@
+@media screen and (max-width: 1200px) {
+
+}
+
+@media screen and (max-width: 991px) {
+    .card {
+        a { 
+            .card_content {
+                .card_title {
+                    font-weight: 400;
+                    font-size: 20px;
+                    line-height: 24px;
+                    margin-bottom: 10px;
+                }
+                .card_desc {
+                    font-size: 14px;
+                    line-height: 18px;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+
+    .mainNews_wrap {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        border-bottom: none;
+        padding-bottom: 0px;
+        .mainNews_left {
+            order: 2;
+            .mainNews_list {
+                padding-bottom: 15px;
+                border-bottom: 1px dashed #E0E0E0;
+                .card {
+                    a {
+                        .card_content {
+                            .card_desc {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .mainNews_middle {
+            order: 1;
+            padding: 0px;
+            border-left: none;
+            border-right: none;
+            .mainNews_card {
+                padding-bottom: 15px;
+                border-bottom: 1px dashed #E0E0E0;
+                a {
+                    .card_img {
+                        margin-bottom: 10px;
+                    }
+                    .card_content {
+                        .card_title {
+                            font-size: 28px;
+                            line-height: 32px;
+                            margin-bottom: 10px;
+                        }
+                        .card_desc {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+        .mainNews_right {
+            order: 3;
+            .lastNews__list {
+                height: 100%;
+                .card {
+                    margin-right: 0px;
+                }
+            }
+        }
+    }
+
+    .card_info {
+        .share {
+            display: block;
+        }
+    }
+
+    .scrollCard {
+        width: 245px!important;
+        a {
+            position: relative;
+            .scrollCard_img {
+                height: 330px;
+                
+            }
+            .scrollCard_content {
+                .scrollCard_title {
+                    font-weight: 600;
+                    font-size: 22px;
+                    line-height: 26px;
+                    color: #fff;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+    .catPage_list {
+        grid-template-columns: 1fr 1fr;
+        .card {
+            padding-bottom: 30px;
+            border-bottom: 1px dashed #E0E0E0;
+            a {
+                .card_img {
+                    height: 240px;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    section {
+        padding: 20px 0px;
+    }
+    .section_header {
+        .cat_title {
+            .title {
+                margin-bottom: 30px;
+            }
+        }
+    }
+    .opinion_wrap {
+        position: relative;
+        padding: 20px 0px;
+    }
+    .opinionBG {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background-color: #F2F2F2;
+        height: 100%;
+        left: -20px;
+        right: -20px;
+        z-index: 0;
+    }
+    .opinionCard {
+        a {
+            display: flex;
+            .opinionCard_img {
+                width: 117px;
+                height: 101px;
+                display: block;
+                &:hover {
+                    transform: scale(1.1);
+                    transition: 0.8s;
+                }
+                img {
+                    width: 117px;
+                    height: 101px;
+                    border-radius: 6px;
+                    object-fit: cover;
+                    filter: brightness(100%);
+                }
+            }
+            .opinionCard_content {
+                position: static;
+                padding: 0px;
+                margin-left: 20px;
+                .opinionCard_title {
+                    font-weight: 700;
+                    font-size: 18px;
+                    line-height: 20px;
+                    margin-bottom: 16px;
+                    color: #000;
+                    width: 100%;
+                }
+                .opinionCard_author {
+                    display: flex;
+                    align-items: center;
+    
+                    .author_img {
+                        width: 25px;
+                        height: 25px;
+                        img {
+                            width: 25px;
+                            height: 25px;
+                            border: 1px solid #FFFFFF;
+                        }
+                    }
+                    .author_info {
+                        margin-left: 12px;
+                        .author_name {
+                            font-weight: 700;
+                            font-size: 12px;
+                            line-height: 15px;
+                            margin-bottom: 0px;
+                            color: #828282;
+                        }
+                        .author_position {
+                            display: none;
+                            font-weight: 400;
+                            font-size: 12px;
+                            line-height: 15px;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .category_wrap {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+        .card {
+            position: relative;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #E0E0E0;
+            a {
+                display: flex;
+                .card_img {
+                    width: 96px;
+                    height: 63px;
+                    margin-bottom: 0px;
+                    img {
+                        width: 96px;
+                        height: 63px;
+                        filter: brightness(100%);
+                    }
+                }
+                .card_content {
+                    margin-left: 18px;
+                    .card_title {
+                        font-size: 18px;
+                        line-height: 24px;
+                        margin-bottom: 8px;
+                    }
+                    .card_time {
+                        position: static;
+                        top: 0px;
+                        padding-left: 0px;
+                        color: #333333;
+                    }
+                }
+            }
+        }
+    }
+    .catPage_list {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+        .card {
+            &:nth-child(odd) {
+                padding-right: 0px;
+                border-right: none;
+            }
+            &:nth-child(even) {
+                padding-left: 0px;
+            }
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #E0E0E0;
+            a {
+                .card_img {
+                    height: 280px;
+                    margin-bottom: 30px;
+                }
+            }
+        }
+    }
+    .article_wrap {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+@media screen and (max-width: 739px) {
+
+}
+
+@media screen and (max-width: 600px) {
+    .support_block {
+        .support_body {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+    }
+    .author_block {
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    
+}
+
+
+@media screen and (max-width: 450px) {
+
+}
+
+@media screen and (max-width: 400px) {
+
+
+
+}
+@media screen and (max-width: 370px) {
+
+}
+@media screen and (max-width: 350px) {
+
+}
+
+@media screen and (max-width: 340px) {
+
+}

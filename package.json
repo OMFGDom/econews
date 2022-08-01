@@ -1,0 +1,30 @@
+{
+ "name": "Zakon",
+ "version": "5.0.0",
+ "description": "Zakon Site",
+ "main": "index.js",
+ "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1"
+ },
+ "author": "NomAZK",
+ "license": "ISC",
+ "devDependencies": {
+  "bootstrap": "^4.4.1",
+  "browser-sync": "^2.26.7",
+  "del": "^5.1.0",
+  "gulp-autoprefixer": "^6.1.0",
+  "gulp-clean-css": "^4.2.0",
+  "gulp-concat": "^2.6.1",
+  "gulp-newer": "^1.4.0",
+  "gulp-rename": "^1.4.0",
+  "gulp-responsive": "^3.0.1",
+  "gulp-rigger": "^0.5.8",
+  "gulp-rsync": "^0.0.9",
+  "gulp-sass": "^4.0.2",
+  "gulp-svg-sprite": "^1.5.0",
+  "gulp-uglify-es": "^2.0.0"
+ },
+ "dependencies": {
+  "gulp": "^4.0.2"
+ }
+}

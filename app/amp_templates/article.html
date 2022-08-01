@@ -1,0 +1,494 @@
+<!doctype html>
+<html amp lang="ru">
+<head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>Hello, AMPs</title>
+    <link rel="canonical" href="https://amp.dev/documentation/guides-and-tutorials/start/create/basic_markup/">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+        body{
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        p{
+            line-height: 1.4em;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            color: #336cda;
+        }
+        .container{
+            padding: 0 30px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .header_logo{
+            margin: 15px 0;
+        }
+        .info {
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            font-size: 12px;
+            color: #6f7179;
+        }
+        .info .comments {
+            display: flex;
+            margin-left: 25px;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+        .info svg {
+            width: 14px;
+            height: 14px;
+            margin-right: 5px;
+            fill: #6f7179;
+        }
+        .media__copyright{
+            font-size: 12px;
+            color: #6f7179;
+            margin-top: 10px;
+        }
+        .description {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 16px 0;
+            line-height: 1.4em;
+        }
+        .to-site-btn{
+            background-color: #336cda;
+            display: block;
+            text-align: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 18px;
+            padding: 14px 0;
+            border-radius: 10px;
+        }
+        blockquote {
+            padding: 40px 35px 25px;
+            -webkit-box-shadow: 0 1px 11px -6px #333;
+            box-shadow: 0 1px 11px -6px #333;
+            border-radius: 5px;
+            position: relative;
+            margin: 40px 0 25px;
+            font-size: 16px;
+            font-weight: 500;
+            border: 1px solid #e7e7e9;
+        }
+        blockquote:before {
+            content: "";
+            display: block;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAyMiAxNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIuMjU2MDcgMi40MzUyNUMzLjcwMzYzIDAuODE5MTg3IDUuODk0MDUgMCA4Ljc2NTQzIDBIOS43OTcxOVYyLjk5NTE5TDguOTY3NjUgMy4xNjYyNUM3LjU1NDE1IDMuNDU3MzggNi41NzA4OCA0LjAzMDA2IDYuMDQ0NjkgNC44NzA1QzUuNzcwMTMgNS4zMjMyNiA1LjYxNDQxIDUuODQxNjcgNS41OTI3OCA2LjM3NUg4Ljc2NTQzQzkuMDM5MDcgNi4zNzUgOS4zMDE1IDYuNDg2OTQgOS40OTQ5OSA2LjY4NjJDOS42ODg0OCA2Ljg4NTQ2IDkuNzk3MTkgNy4xNTU3MSA5Ljc5NzE5IDcuNDM3NVYxNC44NzVDOS43OTcxOSAxNi4wNDY5IDguODcxNyAxNyA3LjczMzY3IDE3SDEuNTQzMTNDMS4yNjk0OSAxNyAxLjAwNzA2IDE2Ljg4ODEgMC44MTM1NjUgMTYuNjg4OEMwLjYyMDA3MyAxNi40ODk1IDAuNTExMzcgMTYuMjE5MyAwLjUxMTM3IDE1LjkzNzVWMTAuNjI1TDAuNTE0NDY2IDcuNTIzNTZDMC41MDUxOCA3LjQwNTYzIDAuMzA5MTQ2IDQuNjExMjUgMi4yNTYwNyAyLjQzNTI1Wk0xOS4wODMgMTdIMTIuODkyNUMxMi42MTg4IDE3IDEyLjM1NjQgMTYuODg4MSAxMi4xNjI5IDE2LjY4ODhDMTEuOTY5NCAxNi40ODk1IDExLjg2MDcgMTYuMjE5MyAxMS44NjA3IDE1LjkzNzVWMTAuNjI1TDExLjg2MzggNy41MjM1NkMxMS44NTQ1IDcuNDA1NjMgMTEuNjU4NSA0LjYxMTI1IDEzLjYwNTQgMi40MzUyNUMxNS4wNTMgMC44MTkxODcgMTcuMjQzNCAwIDIwLjExNDggMEgyMS4xNDY1VjIuOTk1MTlMMjAuMzE3IDMuMTY2MjVDMTguOTAzNSAzLjQ1NzM4IDE3LjkyMDIgNC4wMzAwNiAxNy4zOTQgNC44NzA1QzE3LjExOTUgNS4zMjMyNiAxNi45NjM3IDUuODQxNjcgMTYuOTQyMSA2LjM3NUgyMC4xMTQ4QzIwLjM4ODQgNi4zNzUgMjAuNjUwOCA2LjQ4Njk0IDIwLjg0NDMgNi42ODYyQzIxLjAzNzggNi44ODU0NiAyMS4xNDY1IDcuMTU1NzEgMjEuMTQ2NSA3LjQzNzVWMTQuODc1QzIxLjE0NjUgMTYuMDQ2OSAyMC4yMjEgMTcgMTkuMDgzIDE3WiIgZmlsbD0iI0ZBRkFGQiIvPgo8L3N2Zz4K);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 30px 30px;
+            background-color: #336cda;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: -17px;
+            left: 35px;
+        }
+        .content amp-img{
+            -webkit-box-shadow: 0 0 10px -7px #333;
+            box-shadow: 0 0 10px -7px #333;
+        }
+        .content .selection {
+            background: #f6f5f1;
+            padding: 20px 30px;
+            margin: 20px 0;
+        }
+        .content ul{
+            list-style: none;
+            margin: 25px 0;
+            padding: 0;
+        }
+        .content ul li{
+            padding-left: 25px;
+            position: relative;
+            margin: 10px 0;
+        }
+        .content ul li:before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            display: block;
+            border: 2px solid #e5e5e5;
+            border-radius: 50%;
+            position: absolute;
+            top: 3px;
+            left: 0;
+        }
+        .content ul.numberList li {
+            padding-left: 35px;
+            margin: 10px 0;
+            position: relative;
+        }
+        .content ul.numberList span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 22px;
+            height: 22px;
+            background: #e5e5e5;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 13px;
+        }
+        .content .addedNews {
+            padding: 20px 25px;
+            -webkit-box-shadow: 0 1px 11px -6px #333;
+            box-shadow: 0 1px 11px -6px #333;
+            border-radius: 5px;
+            margin: 25px 0;
+        }
+        .content .addedNews .title {
+            font-weight: 700;
+            color: #6f7179;
+            margin-bottom: 10px;
+        }
+        .content .addedNews a {
+            font-size: 18px;
+            line-height: 24px;
+            border-color: transparent;
+            font-weight: 500;
+            color: var(--color-text);
+            text-decoration: none;
+        }
+        .author {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            background: #f3f3f3;
+            padding: 15px 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        .author .authorImg {
+            width: 56px;
+            height: 56px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .author .authorImg img {
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+        .author .name {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        .author .job{
+            font-size: 12px;
+            color: #6f7179;
+        }
+        .shareLinks {
+            display: flex;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            margin-bottom: 20px;
+        }
+        .shareLinks a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            border: 1px solid #e7e7e9!important;
+            margin-right: 15px;
+        }
+        .shareLinks svg {
+            width: 20px;
+            height: 20px;
+            fill: #336cda;
+        }
+        .tags{
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+        .tags span {
+            padding: 7px 13px;
+            background: #f3f3f3;
+            border: 1px solid #e7e7e9;
+            border-radius: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: var(--color-text);
+        }
+        .zmainCard_item {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .zmainCard_item a {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            border-bottom: 1px solid #e7e7e9;
+            padding-bottom: 15px;
+            color: inherit;
+        }
+        .zmainCard_item .zmainCard_img {
+            width: 100px;
+            min-width: 100px;
+            height: 65px!important;
+            margin-right: 15px;
+        }
+        .zmainCard_item .zmainCard_img img {
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+        .zmainCard_item .zmainCard-content {
+            padding-right: 15px;
+            position: relative;
+        }
+        .zmainCard_item .title {
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .info {
+            display: flex;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+        .zmainCard_item .comments, .zmainCard_item .info-data, .zmainCard_item .views {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+        .zmainCard_item .comments{
+            margin-left: 25px;
+        }
+        @media screen and (max-width: 500px){
+            blockquote {
+                padding: 40px 20px 25px;
+            }
+            blockquote:before {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header_logo"><amp-img src="../img/_src/logo.png" width="166" height="36"></amp-img></div>
+    <div class="info">
+        <div class="date">Вчера в 21:00 (обновлено: 10:03 10.08.2021)</div>
+        <div class="comments"><svg><use xlink:href="../img/_src/icons.svg#comment"></use></svg> 4</div>
+    </div>
+    <h1>Очень сильная жара, дожди с грозами и градом - погода на 3 августа</h1>
+    <amp-img src="https://source.unsplash.com/random/600x400" width="600" height="400" layout="responsive"></amp-img>
+    <div class="media__copyright">Фото: zakon.kz</div>
+    <div class="description">После прививки риск заражения коронавирусной инфекцией существенно понижается, а если вакцинированный все же заболеет, то болезнь протекает менее тяжело, сообщает <a href="#">zakon.kz</a> со ссылкой на <a href="#">РИА Новости</a>.</div>
+    <a href="#" class="to-site-btn">Читать на сайте Zakon.kz</a>
+    <div class="content">
+        <p>Офицер собрал все необходимые документы и обратился в жилищную комиссию департамента тыла МВД с рапортом «об улучшении жилищных условий». Но в очередь МВД на получение квартиры офицера не поставили: жена Дементьева была зарегистрирована у родителей в Подмосковье, а отцу с сыном, рассудила комиссия, имеющейся квартиры хватит, поскольку на каждого прописанного приходится более 18 кв. м площади.</p>
+        <h2>За пять лет до выхода на пенсию, в 2013 году, Андрей Дементьев стал отцом, у него родился сын.</h2>
+        <p>Офицер собрал все необходимые документы и обратился в жилищную комиссию департамента тыла МВД с рапортом «об улучшении жилищных условий». Но в очередь МВД на получение квартиры офицера не поставили: жена Дементьева была зарегистрирована у родителей в Подмосковье, а отцу с сыном, рассудила комиссия, имеющейся квартиры хватит, поскольку на каждого прописанного приходится более 18 кв. м площади. Дементьев спорить не стал, потому что формально комиссия была права.</p>
+        <blockquote>
+            Владимир Путин также сообщил, что договорился с правительством сделать подарок детям, поскольку в этом году из-за пандемии отменены новогодние мероприятия.
+            <span>Аскар Мамин - консултант по делам воспитание редакции</span>
+        </blockquote>
+        <p>Офицер собрал все необходимые документы и обратился в жилищную комиссию департамента тыла МВД с рапортом «об улучшении жилищных условий». Но в очередь МВД на получение квартиры офицера не поставили: жена Дементьева была</p>
+        <amp-img src="../img/@2x/news-6.jpg" width="600" height="400" layout="responsive"></amp-img>
+        <div class="media__copyright">Фото: zakon.kz</div>
+        <p>Офицер собрал все необходимые документы и обратился в жилищную комиссию департамента тыла МВД с рапортом «об улучшении жилищных условий». Но в очередь МВД на получение квартиры офицера не поставили: жена Дементьева была зарегистрирована у родителей в Подмосковье, а отцу с сыном, рассудила комиссия, имеющейся квартиры хватит, поскольку на каждого прописанного приходится более 18 кв. м площади. Дементьев спорить не стал, потому что формально комиссия была права.</p>
+        <div class="selection">Офицер собрал все необходимые документы и обратился в жилищную комиссию департамента тыла МВД с рапортом «об улучшении жилищных условий». Но в очередь МВД на получение квартиры офицера не поставили: жена Дементьева была зарегистрирована у родителей в Подмосковье, а отцу с сыном, рассудила комиссия, имеющейся квартиры хватит, поскольку на каждого прописанного приходится более 18 кв. м площади.</div>
+        <p>Офицер собрал все необходимые документы и обратился в жилищную комиссию департамента тыла МВД с рапортом «об улучшении жилищных условий». Но в очередь МВД на получение квартиры офицера не поставили: жена Дементьева была </p>
+        <ul class="numberList">
+            <li><span>1</span> Жена Дементьева была зарегистрирована у родителейОфицер собрал все необходимые документы и обратился в жилищную комиссию департамента тыла МВД с рапортом «об улучшении жилищных условий».</li>
+            <li><span>2</span> Офицер собрал все необходимые документы</li>
+            <li><span>3</span> В очередь МВД на получение квартиры офицера</li>
+            <li><span>4</span> Формально комиссия была права</li>
+            <li><span>5</span> В очередь МВД на получение квартиры офицера</li>
+        </ul>
+        <p>Офицер собрал все необходимые документы и обратился в жилищную комиссию департамента тыла МВД с рапортом «об улучшении жилищных условий». Но в очередь МВД на получение квартиры офицера не поставили: жена Дементьева была </p>
+        <ul>
+            <li>Жена Дементьева была зарегистрирована у родителейОфицер собрал все необходимые документы и обратился в жилищную комиссию департамента тыла МВД с рапортом «об улучшении жилищных условий».</li>
+            <li>Жена Дементьева была зарегистрирована у родителей</li>
+            <li>Жена Дементьева была зарегистрирована у родителей</li>
+            <li>Жена Дементьева была зарегистрирована у родителей</li>
+            <li>Жена Дементьева была зарегистрирована у родителей</li>
+        </ul>
+        <div class="addedNews">
+            <div class="title">Новости по этой теме</div>
+            <a href="#">Умер казахстанский спортивный комментатор Амангельды Сейтханов</a>
+        </div>
+        <p>Офицер собрал все необходимые документы и обратился в жилищную комиссию департамента тыла МВД с рапортом «об улучшении жилищных условий». Но в очередь МВД на получение квартиры офицера не поставили: жена Дементьева была зарегистрирована у родителей в Подмосковье, а отцу с сыном, рассудила комиссия, имеющейся квартиры хватит, поскольку на каждого прописанного приходится более 18 кв. м площади. Дементьев спорить не стал, потому что формально комиссия была права:</p>
+    </div>
+    <div class="author">
+        <div class="authorImg">
+            <img src="../img/@2x/news-12.jpg" alt="">
+        </div>
+        <div class="authorInfo">
+            <div class="name">Юрий Быков</div>
+            <div class="job">Редактор сайта</div>
+        </div>
+    </div>
+    <div class="shareLinks" id="shareLinks">
+        <div class="shareLink_item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=URL" target="_blank"><svg><use xlink:href="../img/_src/icons.svg#facebook-simple"></use></svg></a>
+        </div>
+        <div class="shareLink_item">
+            <a href="https://vk.com/share.php?url=URL&title=PAGETITLE" target="_blank"><svg><use xlink:href="../img/_src/icons.svg#vk-simple"></use></svg></a>
+        </div>
+        <div class="shareLink_item">
+            <a href="https://twitter.com/intent/tweet?url=URL&text=PAGETITLE" target="_blank"><svg><use xlink:href="../img/_src/icons.svg#twitter"></use></svg></a>
+        </div>
+        <div class="shareLink_item">
+            <a href="https://t.me/share/url?url=URL" target="_blank"><svg><use xlink:href="../img/_src/icons.svg#telegram"></use></svg></a>
+        </div>
+    </div>
+    <div class="tags">
+        <span>Спорт</span>
+        <span>Казахстан</span>
+        <span>МВД</span>
+        <span>Спорт</span>
+    </div>
+    <script async src="//www.instagram.com/embed.js"></script>
+    <div style="margin-top: 25px; margin-bottom: 25px;">
+        <div class="zmainCard_item card_sm z-col-lg-4 z-col-md-6">
+            <a href="#">
+                <div class="zmainCard_img">
+                    <img src="../img/_src/news1.jpg" alt="">
+                </div>
+                <div class="zmainCard-content">
+                    <div class="title">Стрельба в Алматы - погибли пять человек</div>
+                    <div class="info">
+                        <div class="date">Сегодня 23:45</div>
+                        <div class="info-data">
+                            <div class="comments"><svg><use xlink:href="../img/_src/icons.svg#comment"></use></svg> 4</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="zmainCard_item card_sm z-col-lg-4 z-col-md-6">
+            <a href="#">
+                <div class="zmainCard_img">
+                    <img src="../img/_src/news1.jpg" alt="">
+                </div>
+                <div class="zmainCard-content">
+                    <div class="title">Стрельба в Алматы - погибли пять человек</div>
+                    <div class="info">
+                        <div class="date">Сегодня 23:45</div>
+                        <div class="info-data">
+                            <div class="comments"><svg><use xlink:href="../img/_src/icons.svg#comment"></use></svg> 4</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="zmainCard_item card_sm z-col-lg-4 z-col-md-6">
+            <a href="#">
+                <div class="zmainCard_img">
+                    <img src="../img/_src/news1.jpg" alt="">
+                </div>
+                <div class="zmainCard-content">
+                    <div class="title">Стрельба в Алматы - погибли пять человек</div>
+                    <div class="info">
+                        <div class="date">Сегодня 23:45</div>
+                        <div class="info-data">
+                            <div class="comments"><svg><use xlink:href="../img/_src/icons.svg#comment"></use></svg> 4</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="zmainCard_item card_sm z-col-lg-4 z-col-md-6">
+            <a href="#">
+                <div class="zmainCard_img">
+                    <img src="../img/_src/news1.jpg" alt="">
+                </div>
+                <div class="zmainCard-content">
+                    <div class="title">Стрельба в Алматы - погибли пять человек</div>
+                    <div class="info">
+                        <div class="date">Сегодня 23:45</div>
+                        <div class="info-data">
+                            <div class="comments"><svg><use xlink:href="../img/_src/icons.svg#comment"></use></svg> 4</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="zmainCard_item card_sm z-col-lg-4 z-col-md-6">
+            <a href="#">
+                <div class="zmainCard_img">
+                    <img src="../img/_src/news1.jpg" alt="">
+                </div>
+                <div class="zmainCard-content">
+                    <div class="title">Стрельба в Алматы - погибли пять человек</div>
+                    <div class="info">
+                        <div class="date">Сегодня 23:45</div>
+                        <div class="info-data">
+                            <div class="comments"><svg><use xlink:href="../img/_src/icons.svg#comment"></use></svg> 4</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="zmainCard_item card_sm z-col-lg-4 z-col-md-6">
+            <a href="#">
+                <div class="zmainCard_img">
+                    <img src="../img/_src/news1.jpg" alt="">
+                </div>
+                <div class="zmainCard-content">
+                    <div class="title">Стрельба в Алматы - погибли пять человек</div>
+                    <div class="info">
+                        <div class="date">Сегодня 23:45</div>
+                        <div class="info-data">
+                            <div class="comments"><svg><use xlink:href="../img/_src/icons.svg#comment"></use></svg> 4</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
